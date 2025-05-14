@@ -3,6 +3,11 @@ GET http://localhost:5050/products
 
 ###
 
+// GET all the prices under 50 from products
+GET http://localhost:5050/products-price
+
+###
+
 POST http://localhost:5050/users
 Content-Type: application/json
 

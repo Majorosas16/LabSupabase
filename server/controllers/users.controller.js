@@ -3,12 +3,29 @@ const {
   createUserInDB,
   updateUserInDb,
   deleteUserInDb,
+  getPrices,
 } = require("../db/users.db");
 
 const getProducts = async (req, res) => {
   const users = await getAllUsers();
   res.send(users);
 };
+
+const getPrice = async (req, res) => {
+  let newPrices = [];
+  const productsPrice = await getPrices();
+
+  console.log("esto llega de productsPrice", productsPrice);
+  
+  productsPrice.forEach(element => {
+    if (element.price < 50) {
+      newPrices.push(element);
+    }
+  });
+
+  res.send(newPrices);
+};
+
 
 const createUser = async (req, res) => {
   const { name } = req.body;
@@ -34,4 +51,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  getPrice,
 };

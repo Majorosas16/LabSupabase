@@ -4,10 +4,13 @@ const {
   getProducts,
   updateUser,
   deleteUser,
+  getPrice,
 } = require("../controllers/users.controller");
 const router = express.Router();
 
 router.get("/products", getProducts);
+
+router.get("/products-price", getPrice);
 
 router.post("/users", createUser);
 

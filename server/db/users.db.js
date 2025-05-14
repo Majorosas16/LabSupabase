@@ -9,6 +9,15 @@ const getAllUsers = async () => {
   return data;
 };
 
+const getPrices = async () => {
+  const { data, error } = await supabaseCli.from("products").select("price");
+  if (error) {
+    console.error(error);
+    return error;
+  }
+  return data;
+};
+
 const createUserInDB = async (user) => {
   const { data, error } = await supabaseCli
     .from("users")
@@ -53,6 +62,7 @@ const deleteUserInDb = async (userId) => {
 
 module.exports = {
   getAllUsers,
+  getPrices,
   createUserInDB,
   updateUserInDb,
   deleteUserInDb,
