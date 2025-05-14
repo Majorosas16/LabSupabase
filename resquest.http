@@ -22,3 +22,13 @@ GET http://localhost:5050/users/email-username
 GET http://localhost:5050/orders
 
 ###
+
+// 5. GET all products with a price greater than 50 and belongs to Electronics category
+GET http://localhost:5050/product/price-category
+
+###
+
+// 6. GET all post that includes the word "tutorial"
+GET http://localhost:5050/post/tutorial
+
+###

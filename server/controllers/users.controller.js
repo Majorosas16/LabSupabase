@@ -5,6 +5,7 @@ const {
   createUserInDB,
   updateUserInDb,
   deleteUserInDb,
+  getAllPost,
 } = require("../db/users.db");
 
 const getProducts = async (req, res) => {
@@ -46,9 +47,31 @@ const getUserEmail = async (req, res) => {
 };
 
 const getOrderCreateAt = async (req, res) => {
-  const orders = await getAllOrders(); // ya vienen ordenadas
+  const orders = await getAllOrders();
   console.log("esto llega de orders", orders);
   res.send(orders); 
+};
+
+// Lab 2
+
+const getProductsMulti = async (req, res) => {
+  let newArray = [];
+  const productsPrice = await getAllProducts();
+  console.log("esto llega de productsPrice", productsPrice);
+
+  productsPrice.forEach((element) => {
+    if (element.price > 30 && element.category === "Electronics") {
+      newArray.push(element);
+    }
+  });
+
+  res.send(newArray); 
+};
+
+const getPostWord = async (req, res) => {
+  const posts = await getAllPost(); 
+  console.log("esto llega de post", posts);
+  res.send(posts); 
 };
 
 
@@ -77,6 +100,8 @@ module.exports = {
   getPrice,
   getUserEmail,
   getOrderCreateAt,
+  getProductsMulti,
+  getPostWord,
   // createUser,
   // updateUser,
   // deleteUser,

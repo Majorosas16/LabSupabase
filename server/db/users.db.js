@@ -31,6 +31,17 @@ const getAllOrders = async () => {
   return data;
 };
 
+const getAllPost = async () => {
+  const { data, error } = await supabaseCli
+    .from("posts")
+    .select("title")
+    .ilike("title", "%tutorial%");
+  if (error) {
+    console.error(error);
+    return error;
+  }
+  return data;
+};
 
 // const createUserInDB = async (user) => {
 //   const { data, error } = await supabaseCli
@@ -78,6 +89,7 @@ module.exports = {
   getAllProducts,
   getAllUsers,
   getAllOrders,
+  getAllPost,
   // createUserInDB,
   // updateUserInDb,
   // deleteUserInDb,
