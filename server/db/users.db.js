@@ -9,6 +9,16 @@ const getAllProducts = async () => {
   return data;
 };
 
+const getFirst10Products = async () => {
+  const { data, error } = await supabaseCli.from("products").select().limit(10);
+
+  if (error) {
+    console.error(error);
+    return error;
+  }
+  return data;
+};
+
 const getAllUsers = async () => {
   const { data, error } = await supabaseCli.from("users").select();
   if (error) {
@@ -36,6 +46,19 @@ const getAllPost = async () => {
     .from("posts")
     .select("title")
     .ilike("title", "%tutorial%");
+  if (error) {
+    console.error(error);
+    return error;
+  }
+  return data;
+};
+
+const getProductsByCurrentUser = async (userId) => {
+  const { data, error } = await supabaseCli
+    .from("products")
+    .select()
+    .eq("user_id", userId);
+
   if (error) {
     console.error(error);
     return error;
@@ -90,6 +113,8 @@ module.exports = {
   getAllUsers,
   getAllOrders,
   getAllPost,
+  getFirst10Products,
+  getProductsByCurrentUser,
   // createUserInDB,
   // updateUserInDb,
   // deleteUserInDb,

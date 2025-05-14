@@ -10,6 +10,8 @@ const {
   getOrderCreateAt,
   getProductsMulti,
   getPostWord,
+  getFirstProducts,
+  getProductsUser,
 } = require("../controllers/users.controller");
 const router = express.Router();
 
@@ -28,6 +30,10 @@ router.get("/orders", getOrderCreateAt);
 router.get("/product/price-category", getProductsMulti);
 
 router.get("/post/tutorial", getPostWord);
+
+router.get("/products/first10products", getFirstProducts);
+
+router.get("/products/by-user", getProductsUser);
 
 // router.patch("/users/:id", updateUser);
 

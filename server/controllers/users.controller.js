@@ -6,6 +6,8 @@ const {
   updateUserInDb,
   deleteUserInDb,
   getAllPost,
+  getFirst10Products,
+  getProductsByCurrentUser,
 } = require("../db/users.db");
 
 const getProducts = async (req, res) => {
@@ -70,8 +72,25 @@ const getProductsMulti = async (req, res) => {
 
 const getPostWord = async (req, res) => {
   const posts = await getAllPost(); 
-  console.log("esto llega de post", posts);
+  console.log("esto llega de posts", posts);
   res.send(posts); 
+};
+
+const getFirstProducts = async (req, res) => {
+  const productsLimit = await getFirst10Products(); 
+  console.log("esto llega de productsLimit", productsLimit);
+  res.send(productsLimit); 
+};
+
+const getProductsUser = async (req, res) => {
+  const userId = req.query.user_id; // ← viene por query: ?user_id=xxxxx
+
+  if (!userId) {
+    return res.status(400).json({ error: "Falta el user_id" });
+  }
+
+  const data = await getProductsByCurrentUser(userId);
+  res.json(data);
 };
 
 
@@ -102,6 +121,8 @@ module.exports = {
   getOrderCreateAt,
   getProductsMulti,
   getPostWord,
+  getFirstProducts,
+  getProductsUser,
   // createUser,
   // updateUser,
   // deleteUser,
