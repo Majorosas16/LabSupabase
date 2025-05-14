@@ -1,29 +1,24 @@
-// GET to all the records from products
+// 1. GET to all the records from products
 GET http://localhost:5050/products
 
 ###
 
-// GET all the prices under 50 from products
-GET http://localhost:5050/products-price
+// 2. GET all the prices under 50 from products
+GET http://localhost:5050/products/price
 
 ###
 
-POST http://localhost:5050/users
-Content-Type: application/json
-
-{
-    "name": "John Doe"
-}
-
-### 
-
-PATCH http://localhost:5050/users/0bf147d2-5058-4267-b7f7-eb40f8bfdb92
-Content-Type: application/json
-
-{
-    "name": "Jane Doe"
-}
+// Before: GET users
+GET http://localhost:5050/users
 
 ###
 
-DELETE http://localhost:5050/users/0bf147d2-5058-4267-b7f7-eb40f8bfdb92
+// 3. GET all usernames and emails from users
+GET http://localhost:5050/users/email-username
+
+###
+
+// 4. GET all orders in a descending order
+GET http://localhost:5050/orders
+
+###
