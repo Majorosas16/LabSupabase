@@ -1,14 +1,7 @@
-let users = [
-  {
-    id: 1,
-    name: "John Doe",
-  },
-];
-
 const supabaseCli = require("../services/supabase.service");
 
 const getAllUsers = async () => {
-  const { data, error } = await supabaseCli.from("users").select();
+  const { data, error } = await supabaseCli.from("products").select();
   if (error) {
     console.error(error);
     return error;

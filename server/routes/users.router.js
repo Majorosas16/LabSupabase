@@ -1,13 +1,13 @@
 const express = require("express");
 const {
   createUser,
-  getUsers,
+  getProducts,
   updateUser,
   deleteUser,
 } = require("../controllers/users.controller");
 const router = express.Router();
 
-router.get("/users", getUsers);
+router.get("/products", getProducts);
 
 router.post("/users", createUser);
 

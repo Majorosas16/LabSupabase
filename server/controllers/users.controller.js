@@ -5,7 +5,7 @@ const {
   deleteUserInDb,
 } = require("../db/users.db");
 
-const getUsers = async (req, res) => {
+const getProducts = async (req, res) => {
   const users = await getAllUsers();
   res.send(users);
 };
@@ -30,7 +30,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  getUsers,
+  getProducts,
   createUser,
   updateUser,
   deleteUser,
